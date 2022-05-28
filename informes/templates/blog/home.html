@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    <h1>D&A News</h1>
+{% endblock %}
+{% block Introduccion %}
+<div class="Introduccion">
+     <p><center>Somos una pagina de Noticias ocurridas en la Zona sur de Santiago de los Caballeros<center></p>
+</div>
+{% endblock %}
+{% block content %}
+    {% for Crimen in posts %}
+        <div class="post">
+            <h2>{{ Crimen.title }}</h2>
+            <div class="date">
+                <p>Fecha: {{ Crimen.event_date }}</p>
+            </div>
+            <p>{{ Crimen.text|linebreaksbr }}</p>
+            {% if Crimen.reasons %}
+                <div class="Resons">
+                    <p>Posible Razones:</p>
+                    <p>{{ Crimen.reasons }}</p>
+                </div>
+            {% endif %}
+
+            <p><a href="{% url 'Crimen' pk=Crimen.id %}"> Más información...</a></p>
+        </div>
+    {% endfor %}
+{% endblock %}

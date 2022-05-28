@@ -1,0 +1,37 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>D&A News</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">        
+    </head>
+    <body>
+        <nav>
+			<ul>
+				<img  src="/static/img/2logo.png">
+				<li><a href="/">Inicio</a>
+                    <ul>
+						<li><a href="/Robos">Robos</a></li>
+						<li><a href="/Asesinatos">Asesinatos</a></li>
+					</ul>
+                </li>
+				<li><a href="/victimas">Victimas</a></li>
+                <li><a href="/criminales">Criminales</a></li>
+				<li><a href="/sectores">Sectores de las Desgracias</a></li>
+			</ul>
+		</nav>
+        {% block title %}
+        {% endblock %}
+
+        {% block Introduccion %}
+        {% endblock %}
+        <div class="List-Details">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+    </body>
+</html>

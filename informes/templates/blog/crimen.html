@@ -1,0 +1,52 @@
+{% extends 'blog/base2.html' %}
+
+{% block content %}
+    {% for Crimen in Crimenes %}
+			<h2>{{ Crimen.title }}</h2>
+
+			<div class="Crimen_Detail">
+				<p>{{ Crimen.text|linebreaksbr }}</p>
+				{% if Crimen.reasons %}
+					<div class="Resons">
+							<h3>Posible Razones:</h3>
+							<p>{{ Crimen.reasons }}</p>
+					</div>
+				{% endif %}
+			</div>
+			{% if victimas %}
+				<h2>Victimas</h2>
+				<div class="List-Details">
+					{% for victima in victimas %}
+						<div class="Victimas">
+								<div class="info_general">
+										<img id="Imagen" src="/media/{{ victima.img }}" alt="Articulo">
+										<h2>{{ victima.name}}</h2>
+										{% if victima.year %}
+												<h4>Edad:{{ victima.year}}</h4>
+										{% endif %}
+								</div>
+								<p>{{ victima.detail |linebreaksbr }}</p>
+						</div>
+					{% endfor %}  
+				</div>
+			{% endif %}
+			
+			{% if Criminales %}
+				<h2>Criminales</h2>
+				<div class="List-Details">
+					{% for Criminal in Criminales %}
+						<div class="Victimas">
+								<div class="info_general">
+										<img id="Imagen" src="/media/{{ Criminal.img }}" alt="Articulo">
+										<h2>{{ Criminal.name}}</h2>
+										{% if Criminal.year %}
+												<h4>Edad:{{ Criminal.year}}</h4>
+										{% endif %}
+								</div>
+								<p class="detail">{{ Criminal.detail |linebreaksbr }}</p>
+						</div>
+					{% endfor %}  
+				</div>
+			{% endif %}
+    {% endfor %}
+{% endblock %}

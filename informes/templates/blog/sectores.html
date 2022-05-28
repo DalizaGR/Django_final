@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+  <h1>Lista Sectores de las Desgracias</h1>
+{% endblock %}
+{% block content %}
+    {% for Sector in Sectores %}
+		  <div class="sectores">
+				<h2>{{ Sector.title|linebreaksbr }}</h2>
+				<div class="views">
+					{% if Sector.before %}
+						<div class="img">
+							<h4>Antes</h4>
+							<img id="Imagen" src="/media/{{ Sector.before }}" alt="Sectpr">
+						</div>
+					{% endif %}
+					{% if Sector.after %}
+						<div class="img">
+							<h4>Despues</h4>
+							<img id="Imagen" src="/media/{{ Sector.after }}" alt="Sector">
+						</div>
+					{% endif %}
+				</div>
+
+				<p><a href="{% url 'Crimen_Sector' pk=Sector.sector %}">  Ver Crimines de ese Sector</a></p>
+      </div>
+
+    {% endfor %}
+{% endblock %}

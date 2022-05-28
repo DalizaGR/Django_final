@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    <h1>Lista de Victimas</h1>
+{% endblock %}
+{% block content %}
+
+    {% for victima in victimas %}
+        <div class="Victimas">
+            <div class="info_general">
+                <img id="Imagen" src="/media/{{ victima.img }}" alt="Articulo">
+                <h2>{{ victima.name}}</h2>
+                {% if victima.year %}
+                    <h4>Edad:{{ victima.year}}</h4>
+                {% endif %}
+            </div>
+            <p>{{ victima.detail |linebreaksbr }}</p>
+
+            <p><a href="{% url 'Crimen' pk=victima.id %}"> Màs información...</a></p>
+        </div>
+    {% endfor %}    
+{% endblock %}
